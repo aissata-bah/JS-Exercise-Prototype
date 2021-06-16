@@ -95,22 +95,42 @@ function Airplane(name) {
  function Car(model, milesPerGallon) {
   this.model = model;
   this.milesPerGallon = milesPerGallon;
-  this.tank = [];
-  this.odometer = [];
+  this.tank = 0;
+  this.odometer = 0;
   }
   
   Car.prototype.fill = function (gallons) {
-    if(this.tank.length === full){
-      this.tank.push(gallons);
+   for(let i = 0; i < gallons; i++){
+    this.tank++;
     }
   }
 
   Car.prototype.drive = function (distance) {
-    if(this.odometer.length === up){
-      this.odometer.push(distance);
+    for(let i = 0; i < distance; i++){
+    this.odometer++;
+    this.tank--;
     }
   }
 
+  Car.prototype.drive = function(distance){
+    for(let i = 0; i < distance; i++){
+      this.odometer++;
+      if(this.tank != 0){
+        this.tank--;
+      }else{
+        return `I ran out of fuel at ${this.odometer} miles!`
+      }
+    }
+  };
+  const ford = new Car('Ford', 19);
+  ford.fill(20);
+  console.log(ford.drive(25));
+  console.log(ford);
+
+  const toyota = new Car('Toyota', 20);
+  toyota.fill(30);
+  console.log(toyota.drive(45));
+  console.log(toyota);
 
   /*
     TASK 3
@@ -127,10 +147,10 @@ function Airplane(name) {
   /* 
     TASK 4
     In your own words explain the four principles for the "this" keyword below:
-    1. 
-    2. 
-    3. 
-    4. 
+    1. window binding: if not in 'strict mode' where this will then be returned as undefined by Javascript, window binding will return the global/window object.
+    2. implicit binding: this will refer to anything to the left of (aka left or above) it
+    3. explicit binding: 
+    4. new binding: 
   */
   
   
