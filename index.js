@@ -139,9 +139,15 @@ function Airplane(name) {
       - Besides the methods on Person.prototype, babies have the ability to `.play()`:
           + Should return a string "Playing with x", x being the favorite toy.
   */
- function Baby() {
-   
-  }
+function Baby(name, age, favoriteToy) {
+  Person.call(this, name, age);
+    this.favoriteToy = favoriteToy;
+}
+  Baby.prototype = Object.create(Person.prototype);
+  Baby.prototype.play = function(){
+  return `Playing with ${this.favoriteToy}.`
+};
+
  
   
   /* 
@@ -149,8 +155,8 @@ function Airplane(name) {
     In your own words explain the four principles for the "this" keyword below:
     1. window binding: if not in 'strict mode' where this will then be returned as undefined by Javascript, window binding will return the global/window object.
     2. implicit binding: this will refer to anything to the left of (aka left or above) it
-    3. explicit binding: 
-    4. new binding: 
+    3. explicit binding: .call and .apply methods must be used after .this, otherwise explicit does not automatically inherit from parent.
+    4. new binding: assigning a parents function to a new variable.
   */
   
   
