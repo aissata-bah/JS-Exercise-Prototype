@@ -156,7 +156,8 @@ function Baby(name, age, favoriteToy) {
     1. window binding: if not in 'strict mode' where this will then be returned as undefined by Javascript, window binding will return the global/window object.
     2. implicit binding: this will refer to anything to the left of (aka left or above) it
     3. explicit binding: .call and .apply methods must be used after .this, otherwise explicit does not automatically inherit from parent.
-    4. new binding: assigning a parents function to a new variable.
+    4. new binding: assigning a function to a new variable via constructor
+    when assigning the constructor function to a new variable, this binds to the new object variable.
   */
   
   
